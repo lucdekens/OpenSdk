@@ -169,3 +169,16 @@ function Get-rVMHost{
     }
     Invoke-RestCall @sRestCall
 }
+
+function Get-rProxyConfig{
+
+    Write-Verbose -Message "$($MyInvocation.MyCommand.Name)"
+    Write-Verbose -Message "`t$($PSCmdlet.ParameterSetName)"
+    Write-Verbose -Message "`tCalled from $($stack = Get-PSCallStack; $stack[1].Command) at $($stack[1].Location)"
+		
+    $sRestCall = @{
+        Method = 'GET'
+        Request = 'appliance/techpreview/networking/proxy'
+    }
+    Invoke-RestCall @sRestCall
+}
